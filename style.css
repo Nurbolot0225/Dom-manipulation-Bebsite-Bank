@@ -138,7 +138,7 @@ img {
   transition: all 0.3s;
   margin-left: 8rem;
   margin-top: 1rem;
-  align-items: left;
+  align-items: flex-start;
 }
 
 .nav__links {
