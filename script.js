@@ -43,3 +43,15 @@ header.append(message);
 document.querySelector('.btn--close-cookie').addEventListener('click', function() {
   message.remove();
 });
+
+// Стили
+
+message.style.backgroundColor = '#076785';
+message.style.width = '102%';
+console.log(message.style.width);
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
+console.log(getComputedStyle(message));
+console.log(getComputedStyle(message).height);
+message.style.height = Number.parseFloat(getComputedStyle(message).height) + 50 + 'px';
+document.documentElement.style.setProperty('--color-first', 'yellow');
