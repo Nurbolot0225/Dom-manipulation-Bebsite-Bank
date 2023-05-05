@@ -79,9 +79,21 @@ document.addEventListener('keydown', function (e) {
 // logo.classList.toggle('a',);
 // logo.classList.contains('a');
 
+// Scroll Service
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1')
 
 btnScrollTo.addEventListener('click', function() {
   section1.scrollIntoView({ behavior: 'smooth'});
 })
+
+// Виды Событий И Обработчиков Событий
+
+const h1 = document.querySelector('h1');
+
+const mouseEvent = function(e) {
+  h1.style.backgroundColor = 'yellow';
+}
+h1.addEventListener('mouseenter', mouseEvent)
+
+setTimeout(() => h1.style.backgroundColor = '', 3000);
