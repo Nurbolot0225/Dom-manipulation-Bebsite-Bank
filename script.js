@@ -57,24 +57,31 @@ document.addEventListener('keydown', function (e) {
 // document.documentElement.style.setProperty('--color-first', 'yellow');
 
 // Атрибуты
-const logo = document.querySelector('.nav__logo');
-console.log(logo.alt);
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
-console.log(logo.className);
 
-logo.alt = 'Лого Прекрасного Банка';
+// const logo = document.querySelector('.nav__logo');
+// console.log(logo.alt);
+// console.log(logo.src);
+// console.log(logo.getAttribute('src'));
+// console.log(logo.className);
+//
+// logo.alt = 'Лого Прекрасного Банка';
+//
+// // Не стандартный атрибут
+// console.log(logo.developer);
+// console.log(logo.getAttribute('developer'));
+// logo.setAttribute('id', 'logo')
+// console.log(logo);
+//
+// // classes
+//
+// logo.classList.add('a', 'b');
+// logo.classList.remove('a', 'b')
+// logo.classList.toggle('a',);
+// logo.classList.contains('a');
 
-// Не стандартный атрибут
-console.log(logo.developer);
-console.log(logo.getAttribute('developer'));
-logo.setAttribute('id', 'logo')
-console.log(logo);
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1')
 
-// classes
-
-logo.classList.add('a', 'b');
-logo.classList.remove('a', 'b')
-logo.classList.toggle('a',);
-logo.classList.contains('a');
-
+btnScrollTo.addEventListener('click', function() {
+  section1.scrollIntoView({ behavior: 'smooth'});
+})
