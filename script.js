@@ -59,6 +59,31 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
 //   })
 // })
 
+// Dom traversing (Перемешения по DOM)
+const h1 = document.querySelector('h1');
+
+// Перемещение вниз (к потомкам)
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.firstElementChild);
+console.log(h1.firstElementChild.style.color = 'yellow');
+console.log(h1.lastElementChild);
+console.log(h1.lastElementChild.style.color = 'red');
+
+// Перемещение вверх (к родителям)
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+const h2 = document.querySelector('h2');
+console.log(h2);
+h2.closest('.section').style.backgroundColor = 'blue';
+
+// Перемещение в стороны
+console.log(h2.previousElementSibling);
+console.log(h2.nextElementSibling);
+
+console.log(h1.parentElement.children);
+
 
 //
 /////// Практика ❤️❤️❤️JavaScript❤️❤️❤️ learn //////
