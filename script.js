@@ -1,13 +1,15 @@
 'use strict';
 
 ///////////////////////////////////////
-// Modal window
 
 const modalWindow = document.querySelector('.modal-window');
 const overlay = document.querySelector('.overlay');
 const btnCloseModalWindow = document.querySelector('.btn--close-modal-window');
 const btnsOpenModalWindow = document.querySelectorAll('.btn--show-modal-window');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1')
 
+// Modal window
 const openModalWindow = function (e) {
   e.preventDefault();
   modalWindow.classList.remove('hidden');
@@ -29,6 +31,39 @@ document.addEventListener('keydown', function (e) {
     closeModalWindow();
   }
 });
+
+// Scroll Service
+btnScrollTo.addEventListener('click', function() {
+  section1.scrollIntoView({ behavior: 'smooth'});
+})
+
+/// Делегирование событий
+// Smooth page navigation
+// 1. Добовляем event listener для ОБЩЕГО родителя
+document.querySelector('.nav__links').addEventListener('click', function(e) {
+  e.preventDefault();
+  console.log(e.target);
+  // 2. Определить target элемент
+  if (e.target.classList.contains('nav__link')) {
+    const href = e.target.getAttribute('href');
+    console.log(href);
+    document.querySelector(href).scrollIntoView({behavior: 'smooth'})
+  }
+})
+
+// document.querySelectorAll('.nav__link').forEach(function(htmlElement) {
+//   htmlElement.addEventListener('click', function(e) {
+//     e.preventDefault();
+//     const href = this.getAttribute('href');
+//     document.querySelector(href).scrollIntoView({behavior: 'smooth'})
+//   })
+// })
+
+
+//
+/////// Практика ❤️❤️❤️JavaScript❤️❤️❤️ learn //////
+//
+
 
 // Создание и вставка элементов
 
@@ -77,15 +112,6 @@ document.addEventListener('keydown', function (e) {
 // logo.classList.toggle('a',);
 // logo.classList.contains('a');
 
-
-// Scroll Service
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1')
-
-btnScrollTo.addEventListener('click', function() {
-  section1.scrollIntoView({ behavior: 'smooth'});
-})
-
 // Виды Событий И Обработчиков Событий
 
 // const h1 = document.querySelector('h1');
@@ -99,42 +125,42 @@ btnScrollTo.addEventListener('click', function() {
 
 
 // Event Propagation
-function getRandomInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-const getRandomColor = () => `rgb(${getRandomInclusive(0, 255)}, ${getRandomInclusive(0, 255)}, ${getRandomInclusive(0, 255)})`;
-
-document.querySelector('.nav__link').addEventListener('click', function(e) {
-  this.style.backgroundColor = getRandomColor();
-  console.log('Link', e.target, e.currentTarget);
-  console.log(this === e.currentTarget);
-  // Stop Propagation
-  e.stopPropagation();
-})
-
-document.querySelector('.nav__links').addEventListener('click', function(e) {
-  this.style.backgroundColor = getRandomColor();
-  console.log('LinkS', e.target, e.currentTarget);
-  console.log(this === e.currentTarget);
-})
-
-document.querySelector('.nav').addEventListener('click', function(e) {
-  this.style.backgroundColor = getRandomColor();
-  console.log('NAV', e.target, e.currentTarget);
-  console.log(this === e.currentTarget);
-})
-
-document.querySelector('header').addEventListener('click', function(e) {
-  this.style.backgroundColor = getRandomColor();
-  console.log('HEADER', e.target, e.currentTarget);
-  console.log(this === e.currentTarget);
-})
-
-document.querySelector('body').addEventListener('click', function(e) {
-  this.style.backgroundColor = getRandomColor();
-  console.log('BODY', e.target, e.currentTarget);
-  console.log(this === e.currentTarget);
-})
+// function getRandomInclusive(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// }
+//
+// const getRandomColor = () => `rgb(${getRandomInclusive(0, 255)}, ${getRandomInclusive(0, 255)}, ${getRandomInclusive(0, 255)})`;
+//
+// document.querySelector('.nav__link').addEventListener('click', function(e) {
+//   this.style.backgroundColor = getRandomColor();
+//   console.log('Link', e.target, e.currentTarget);
+//   console.log(this === e.currentTarget);
+//   // Stop Propagation
+//   e.stopPropagation();
+// })
+//
+// document.querySelector('.nav__links').addEventListener('click', function(e) {
+//   this.style.backgroundColor = getRandomColor();
+//   console.log('LinkS', e.target, e.currentTarget);
+//   console.log(this === e.currentTarget);
+// })
+//
+// document.querySelector('.nav').addEventListener('click', function(e) {
+//   this.style.backgroundColor = getRandomColor();
+//   console.log('NAV', e.target, e.currentTarget);
+//   console.log(this === e.currentTarget);
+// })
+//
+// document.querySelector('header').addEventListener('click', function(e) {
+//   this.style.backgroundColor = getRandomColor();
+//   console.log('HEADER', e.target, e.currentTarget);
+//   console.log(this === e.currentTarget);
+// })
+//
+// document.querySelector('body').addEventListener('click', function(e) {
+//   this.style.backgroundColor = getRandomColor();
+//   console.log('BODY', e.target, e.currentTarget);
+//   console.log(this === e.currentTarget);
+// })
