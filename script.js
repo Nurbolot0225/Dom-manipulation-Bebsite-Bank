@@ -6,9 +6,7 @@
 const modalWindow = document.querySelector('.modal-window');
 const overlay = document.querySelector('.overlay');
 const btnCloseModalWindow = document.querySelector('.btn--close-modal-window');
-const btnsOpenModalWindow = document.querySelectorAll(
-  '.btn--show-modal-window'
-);
+const btnsOpenModalWindow = document.querySelectorAll('.btn--show-modal-window');
 
 const openModalWindow = function (e) {
   e.preventDefault();
@@ -79,6 +77,7 @@ document.addEventListener('keydown', function (e) {
 // logo.classList.toggle('a',);
 // logo.classList.contains('a');
 
+
 // Scroll Service
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1')
@@ -89,11 +88,53 @@ btnScrollTo.addEventListener('click', function() {
 
 // Виды Событий И Обработчиков Событий
 
-const h1 = document.querySelector('h1');
+// const h1 = document.querySelector('h1');
+//
+// const mouseEvent = function(e) {
+//   h1.style.backgroundColor = 'yellow';
+// }
+// h1.addEventListener('mouseenter', mouseEvent)
+//
+// setTimeout(() => h1.style.backgroundColor = '', 3000);
 
-const mouseEvent = function(e) {
-  h1.style.backgroundColor = 'yellow';
+
+// Event Propagation
+function getRandomInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
-h1.addEventListener('mouseenter', mouseEvent)
 
-setTimeout(() => h1.style.backgroundColor = '', 3000);
+const getRandomColor = () => `rgb(${getRandomInclusive(0, 255)}, ${getRandomInclusive(0, 255)}, ${getRandomInclusive(0, 255)})`;
+
+document.querySelector('.nav__link').addEventListener('click', function(e) {
+  this.style.backgroundColor = getRandomColor();
+  console.log('Link', e.target, e.currentTarget);
+  console.log(this === e.currentTarget);
+  // Stop Propagation
+  e.stopPropagation();
+})
+
+document.querySelector('.nav__links').addEventListener('click', function(e) {
+  this.style.backgroundColor = getRandomColor();
+  console.log('LinkS', e.target, e.currentTarget);
+  console.log(this === e.currentTarget);
+})
+
+document.querySelector('.nav').addEventListener('click', function(e) {
+  this.style.backgroundColor = getRandomColor();
+  console.log('NAV', e.target, e.currentTarget);
+  console.log(this === e.currentTarget);
+})
+
+document.querySelector('header').addEventListener('click', function(e) {
+  this.style.backgroundColor = getRandomColor();
+  console.log('HEADER', e.target, e.currentTarget);
+  console.log(this === e.currentTarget);
+})
+
+document.querySelector('body').addEventListener('click', function(e) {
+  this.style.backgroundColor = getRandomColor();
+  console.log('BODY', e.target, e.currentTarget);
+  console.log(this === e.currentTarget);
+})
