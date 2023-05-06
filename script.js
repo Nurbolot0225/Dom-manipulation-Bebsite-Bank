@@ -7,7 +7,11 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModalWindow = document.querySelector('.btn--close-modal-window');
 const btnsOpenModalWindow = document.querySelectorAll('.btn--show-modal-window');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1')
+const section1 = document.querySelector('#section--1');
+const tabs = document.querySelectorAll('.operations__tab');
+const tabContainer = document.querySelector('.operations__tab-container');
+const tabContents = document.querySelectorAll('.operations__content')
+const nav = document.querySelector('.nav');
 
 // Modal window
 const openModalWindow = function (e) {
@@ -52,11 +56,6 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
 })
 
 // Вкладки
-const tabs = document.querySelectorAll('.operations__tab');
-const tabContainer = document.querySelector('.operations__tab-container');
-const tabContents = document.querySelectorAll('.operations__content')
-
-
 tabContainer.addEventListener('click', function(e) {
   const clickedButton = e.target.closest('.operations__tab');
   // Guard clause - Пункт охраны
@@ -72,7 +71,29 @@ tabContainer.addEventListener('click', function(e) {
   .classList.add('operations__content--active')
 })
 
+// Анимация потускнения на панели навигации
+const navLinksHoverAnimation = function(e) {
+  if (e.target.classList.contains('nav__link')) {
+    const linkOver = e.target;
+    const siblingLinks = linkOver.closest('.nav__links')
+      .querySelectorAll('.nav__link');
+    const logo = linkOver.closest('.nav')
+      .querySelector('img');
+    const logoText = linkOver.closest('.nav')
+      .querySelector('.nav__text');
 
+    siblingLinks.forEach(el => {
+      if (el !== linkOver) el.style.opacity = this;
+    })
+    logo.style.opacity = this;
+    logoText.style.opacity = this;
+  }
+}
+
+// Работа с аргументами при помощи bind() / this
+nav.addEventListener('mouseover', navLinksHoverAnimation.bind(0.4));
+
+nav.addEventListener('mouseout', navLinksHoverAnimation.bind(1));
 
 //
 /////// Практика ❤️❤️❤️JavaScript❤️❤️❤️ learn //////
