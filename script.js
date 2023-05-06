@@ -51,6 +51,33 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
   }
 })
 
+// Вкладки
+const tabs = document.querySelectorAll('.operations__tab');
+const tabContainer = document.querySelector('.operations__tab-container');
+const tabContents = document.querySelectorAll('.operations__content')
+
+
+tabContainer.addEventListener('click', function(e) {
+  const clickedButton = e.target.closest('.operations__tab');
+  // Guard clause - Пункт охраны
+  if (!clickedButton) return
+
+  // Активная вкладка
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'))
+  clickedButton.classList.add('operations__tab--active')
+
+  // Активная контент
+  tabContents.forEach(content => content.classList.remove('operations__content--active'))
+  document.querySelector(`.operations__content--${clickedButton.dataset.tab}`)
+  .classList.add('operations__content--active')
+})
+
+
+
+//
+/////// Практика ❤️❤️❤️JavaScript❤️❤️❤️ learn //////
+//
+
 // document.querySelectorAll('.nav__link').forEach(function(htmlElement) {
 //   htmlElement.addEventListener('click', function(e) {
 //     e.preventDefault();
@@ -60,35 +87,29 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
 // })
 
 // Dom traversing (Перемешения по DOM)
-const h1 = document.querySelector('h1');
+// const h1 = document.querySelector('h1');
 
 // Перемещение вниз (к потомкам)
-console.log(h1.querySelectorAll('.highlight'));
-console.log(h1.childNodes);
-console.log(h1.firstElementChild);
-console.log(h1.firstElementChild.style.color = 'yellow');
-console.log(h1.lastElementChild);
-console.log(h1.lastElementChild.style.color = 'red');
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+// console.log(h1.firstElementChild);
+// console.log(h1.firstElementChild.style.color = 'yellow');
+// console.log(h1.lastElementChild);
+// console.log(h1.lastElementChild.style.color = 'red');
 
 // Перемещение вверх (к родителям)
-console.log(h1.parentNode);
-console.log(h1.parentElement);
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
 
-const h2 = document.querySelector('h2');
-console.log(h2);
-h2.closest('.section').style.backgroundColor = 'blue';
+// const h2 = document.querySelector('h2');
+// console.log(h2);
+// h2.closest('.section').style.backgroundColor = 'blue';
 
 // Перемещение в стороны
-console.log(h2.previousElementSibling);
-console.log(h2.nextElementSibling);
+// console.log(h2.previousElementSibling);
+// console.log(h2.nextElementSibling);
 
-console.log(h1.parentElement.children);
-
-
-//
-/////// Практика ❤️❤️❤️JavaScript❤️❤️❤️ learn //////
-//
-
+// console.log(h1.parentElement.children);
 
 // Создание и вставка элементов
 
