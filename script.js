@@ -10,8 +10,9 @@ const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 const tabs = document.querySelectorAll('.operations__tab');
 const tabContainer = document.querySelector('.operations__tab-container');
-const tabContents = document.querySelectorAll('.operations__content')
+const tabContents = document.querySelectorAll('.operations__content');
 const nav = document.querySelector('.nav');
+const header = document.querySelector('.header');
 
 // Modal window
 const openModalWindow = function (e) {
@@ -95,9 +96,57 @@ nav.addEventListener('mouseover', navLinksHoverAnimation.bind(0.4));
 
 nav.addEventListener('mouseout', navLinksHoverAnimation.bind(1));
 
+// Sticky navigation
+const navHeight = nav.getBoundingClientRect().height;
+const getStickyNav = function(entries) {
+  const entry = entries[0]
+  if (!entry.isIntersecting) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+}
+
+const observer = new IntersectionObserver(getStickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `${navHeight}px`,
+})
+observer.observe(header);
+
+
+
 //
 /////// Практика ❤️❤️❤️JavaScript❤️❤️❤️ learn //////
 //
+
+// Sticky navigation
+
+// const section1Coords = section1.getBoundingClientRect();
+//
+// window.addEventListener('scroll', function() {
+//   if (window.scrollY > section1Coords.top) {
+//     nav.classList.add('sticky');
+//   } else{
+//     nav.classList.remove('sticky');
+//   }
+// })
+
+// Sticky navigation - Intersection Observer API
+
+// const observerCallback = function(entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   })
+// }
+//
+// const observerOptions = {
+//   root: null,
+//   threshold: [0, 0.2],
+// }
+//
+// const observer = new IntersectionObserver(observerCallback, observerOptions);
+// observer.observe(section1);
 
 // document.querySelectorAll('.nav__link').forEach(function(htmlElement) {
 //   htmlElement.addEventListener('click', function(e) {
