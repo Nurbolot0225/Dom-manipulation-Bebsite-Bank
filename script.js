@@ -1,7 +1,5 @@
 'use strict';
 
-///////////////////////////////////////
-
 const modalWindow = document.querySelector('.modal-window');
 const overlay = document.querySelector('.overlay');
 const btnCloseModalWindow = document.querySelector('.btn--close-modal-window');
@@ -131,7 +129,7 @@ const sectionObserver = new IntersectionObserver(appearanceSection, {
 
 allSections.forEach(function(section) {
   sectionObserver.observe(section)
-  section.classList.add('section--hidden');
+  // section.classList.add('section--hidden');
 })
 
 // Имплементация lazy loading для изображений
@@ -158,6 +156,39 @@ const lazyImagesObserver = new IntersectionObserver(loadImages, {
 });
 lazyImages.forEach(image => lazyImagesObserver.observe(image));
 
+// Создание слайдера
+const slides = document.querySelectorAll('.slide');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+
+let currentSlide = 0;
+const slidesNumber = slides.length;
+
+const moveToSlide = function(slide) {
+  slides.forEach((s, index) => s.style.transform = `translateX(${(index - slide) * 100}%)`);
+}
+
+  moveToSlide(0);
+  // 1 - 0%, 2 - 100%, 3 - 200%, 4 - 300%
+
+btnRight.addEventListener('click', function() {
+  if (currentSlide === slidesNumber - 1) {
+    currentSlide = 0;
+  } else {
+    currentSlide++;
+  }
+  moveToSlide(currentSlide);
+  // 1 - -100%, 2 - -0%, 3 - -100%, 4 - -200%
+})
+
+btnLeft.addEventListener('click', function() {
+  if (currentSlide === 0) {
+    currentSlide = slidesNumber - 1;
+  } else {
+    currentSlide--;
+  }
+  moveToSlide(currentSlide);
+})
 
 //
 /////// Практика ❤️❤️❤️JavaScript❤️❤️❤️ learn //////
