@@ -230,19 +230,19 @@ dotContainer.addEventListener('click', function(e) {
 //
 
 // lifecycle Dom Events
-document.addEventListener('DOMContentLoaded', function(e) {
-  console.log('DOMContentLoaded', e);
-})
-
-window.addEventListener('load', function(e) {
-  console.log('load', e);
-})
-
-window.addEventListener('beforeunload', function(e) {
-  e.preventDefault();
-  console.log(e);
-  e.returnValue = '';
-})
+// document.addEventListener('DOMContentLoaded', function(e) {
+//   console.log('DOMContentLoaded', e);
+// })
+//
+// window.addEventListener('load', function(e) {
+//   console.log('load', e);
+// })
+//
+// window.addEventListener('beforeunload', function(e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// })
 
 // Sticky navigation
 
