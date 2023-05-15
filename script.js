@@ -129,7 +129,7 @@ const sectionObserver = new IntersectionObserver(appearanceSection, {
 
 allSections.forEach(function(section) {
   sectionObserver.observe(section)
-  // section.classList.add('section--hidden');
+  section.classList.add('section--hidden');
 })
 
 // Имплементация lazy loading для изображений
